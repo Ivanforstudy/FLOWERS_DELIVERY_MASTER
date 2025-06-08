@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Flower Delivery Master{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Flower Delivery Master</h1>
+        <nav>
+            <a href="{% url 'main:home' %}">Главная</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'accounts:logout' %}">Выйти</a>
+            {% else %}
+                <a href="{% url 'accounts:login' %}">Вход</a>
+                <a href="{% url 'accounts:register' %}">Регистрация</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

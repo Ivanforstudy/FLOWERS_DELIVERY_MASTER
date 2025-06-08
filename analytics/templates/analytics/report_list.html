@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% block title %}Аналитика по заказам{% endblock %}
+
+{% block content %}
+  <h1>📊 Ежедневная аналитика</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Дата</th>
+        <th>Количество заказов</th>
+        <th>Выручка</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in reports %}
+        <tr>
+          <td>{{ report.date }}</td>
+          <td>{{ report.total_orders }}</td>
+          <td>{{ report.total_revenue }} ₽</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

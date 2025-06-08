@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Детали заказа{% endblock %}
+
+{% block content %}
+  <h1>📃 Детали заказа</h1>
+  <p><strong>Букет:</strong> {{ order.bouquet.name }}</p>
+  <p><strong>Адрес доставки:</strong> {{ order.address }}</p>
+  <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
+  <p><strong>Дата оформления:</strong> {{ order.created_at }}</p>
+{% endblock %}

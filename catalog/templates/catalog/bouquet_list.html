@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block content %}
+<h2>Каталог букетов</h2>
+<ul>
+    {% for bouquet in bouquets %}
+        <li>
+            <a href="{% url 'catalog:bouquet_detail' bouquet.pk %}">
+                <img src="{{ bouquet.image.url }}" alt="{{ bouquet.name }}" width="100">
+                {{ bouquet.name }} — {{ bouquet.price }} ₽
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
