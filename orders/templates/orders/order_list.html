@@ -1,14 +1,16 @@
 {% extends "main/base.html" %}
-
 {% block content %}
-<h2>Мои заказы</h2>
-<ul>
-    {% for order in orders %}
-        <li>
-            {{ order.created_at }} — {{ order.status }} — {{ order.total_price }} ₽
-        </li>
-    {% empty %}
-        <li>У вас пока нет заказов.</li>
-    {% endfor %}
-</ul>
+  <h2>Ваши заказы</h2>
+  {% for order in orders %}
+    <div>
+      <strong>{{ order }}</strong><br>
+      <ul>
+        {% for item in order.items.all %}
+          <li>{{ item.quantity }} x {{ item.product.name }} — {{ item.product.price }}₽</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% empty %}
+    <p>Вы ещё не сделали заказов.</p>
+  {% endfor %}
 {% endblock %}
